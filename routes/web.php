@@ -6,3 +6,6 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'AdminsController@login');
+Route::get('/users', 'UsersController@users');
+
+

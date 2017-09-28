@@ -36,8 +36,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts()
+    function getUsers()
     {
-
+        return $this->get()->toArray();
     }
 }
