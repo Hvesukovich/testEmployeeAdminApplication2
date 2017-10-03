@@ -10500,52 +10500,69 @@ $(document).ready(function () {
         var address = $('#address')[0].value;
         var id = $('#UserId')[0].value;
 
-        $.post('api/save-user', {
-            firstName: firstName,
-            lastName: lastName,
-            dateOfBirth: dateOfBirth,
-            email: email,
-            password: password,
-            address: address,
-            id: id
-        }, function (data) {
-            console.log(data);
-            if (data !== 'false') {
-                if (data === 'update') {
-                    // let row = $('tr[marker = '+ id +']');
-                    var row = $('#row_' + id);
-                    row.find('.firstName').html(firstName);
-                    row.find('.lastName').html(lastName);
-                    row.find('.dateOfBirth').html(dateOfBirth);
-
-                    users[id].firstName = firstName;
-                    users[id].lastName = lastName;
-                    users[id].DateOfBirth = dateOfBirth;
-                    users[id].email = email;
-                    users[id].password = password;
-                    users[id].address = address;
-                } else {
-                    var _id = parseInt(data);
-                    var user = {
-                        id: _id,
-                        img: '../../images/holder.jpg',
+        return new Promise(function (resolve, reject) {
+            googleMapsGeocode(address).then(function (status) {
+                console.log(status);
+                if (status === 'OK') {
+                    $.post('api/save-user', {
                         firstName: firstName,
                         lastName: lastName,
-                        DateOfBirth: dateOfBirth,
+                        dateOfBirth: dateOfBirth,
                         email: email,
                         password: password,
-                        address: address
-                    };
-                    users[_id] = user;
-                    createRowUser(user);
-                    console.log(users);
+                        address: address,
+                        id: id
+                    }, function (data) {
+                        console.log(data);
+                        if (data !== 'false') {
+                            if (data === 'update') {
+                                // let row = $('tr[marker = '+ id +']');
+                                var row = $('#row_' + id);
+                                row.find('.firstName').html(firstName);
+                                row.find('.lastName').html(lastName);
+                                row.find('.dateOfBirth').html(dateOfBirth);
+
+                                users[id].firstName = firstName;
+                                users[id].lastName = lastName;
+                                users[id].DateOfBirth = dateOfBirth;
+                                users[id].email = email;
+                                users[id].password = password;
+                                users[id].address = address;
+                            } else {
+                                var _id = parseInt(data);
+                                var user = {
+                                    id: _id,
+                                    img: '../../images/holder.jpg',
+                                    firstName: firstName,
+                                    lastName: lastName,
+                                    DateOfBirth: dateOfBirth,
+                                    email: email,
+                                    password: password,
+                                    address: address
+                                };
+                                users[_id] = user;
+                                createRowUser(user);
+                                console.log(users);
+                            }
+                            $('#userEditModal').modal('hide');
+                        } else {
+                            alert("Error saving data");
+                        }
+                    });
+                } else {
+                    alert('Enter an existing address');
                 }
-                $('#userEditModal').modal('hide');
-            } else {
-                alert("Error saving data");
-            }
+            });
         });
     });
+
+    function googleMapsGeocode(address) {
+        return new Promise(function (resolve, reject) {
+            $.post('https://maps.googleapis.com/maps/api/geocode/json?address=' + address, function (data) {
+                resolve(data.status);
+            }, 'json');
+        });
+    }
 
     /*-----------------------End list of all users------------------------------------------*/
 });
