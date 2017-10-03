@@ -23,8 +23,8 @@
                 </div>
                 <hr>
                 <div class="text-center">
-                    <input type = "submit" id="forma_login_admin"
-                           class="btn btn-primary cursor-pointer" value = "Войти" />
+                    <input type="submit" id="forma_login_admin"
+                           class="btn btn-primary cursor-pointer" value="Войти" />
                 </div>
             </form>
         </div>

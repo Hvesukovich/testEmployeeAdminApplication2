@@ -26,21 +26,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="/users">Users</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-
-    @yield('content')
+    <div id="app" class="container">
+        @yield('content')
+    </div>
 
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/myScript.js') }}"></script>
     </body>
 </html>

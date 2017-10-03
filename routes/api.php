@@ -22,3 +22,5 @@ Route::post('login-verification', 'AdminsController@loginVerification');
 
 //API Users
 Route::post('get-all-users', 'UsersController@getAllUsers');
+Route::post('delete-user/{id}', 'UsersController@delUser');
+Route::post('save-user', 'UsersController@saveUser');

@@ -20,11 +20,13 @@ class AdminsController extends Controller
         if ((isset($input['login']) && $input['login'] != '') &&
             (isset($input['password']) && $input['password'] != '')) {
             $Admins = new Admins();
-            $admin = $Admins->where('login', '=', $input['login'])
-                            ->where('password', '=', $input['password'])
-                            ->get();
+            $admin = $Admins->loginVerification($input['login'], $input['password']);
             if(isset($admin[0]))
             {
+                session_start();
+                if (!isset($_SESSION['login'])) {
+                    $_SESSION['login'] = true;
+                }
                 return 'true';
             } else
             {
@@ -33,5 +35,22 @@ class AdminsController extends Controller
         }
     }
 
+    function adminsCreate($adminLogin, $adminPassword)
+    {
+        $Admins = new Admins();
+        $admin = $Admins->userSearch($adminLogin);
+        if (!isset($admin[0]['id'])){
+            $newAdmin = $Admins->adminsCreate($adminLogin, $adminPassword);
+
+            if (isset($newAdmin))
+            {
+                return $newAdmin;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }

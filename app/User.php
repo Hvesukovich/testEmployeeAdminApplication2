@@ -20,7 +20,7 @@ class User extends Authenticatable
         'DateOfBirth',
         'email',
         'password',
-        'adress',
+        'address',
         'img',
         'remember_token',
         'created_at',
@@ -33,11 +33,52 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
-    function getUsers()
+    function getAllUsers()
     {
         return $this->get()->toArray();
+    }
+
+    function getUserById($id)
+    {
+        return $this->find($id);
+    }
+
+    function delUserById($id)
+    {
+        return $this->find($id)->delete();
+    }
+
+    function updateUser($input)
+    {
+        return $this->find($input['id'])->update([
+            'firstName' => $input['firstName'],
+            'lastName' => $input['lastName'],
+            'DateOfBirth' => $input['dateOfBirth'],
+            'email' => $input['email'],
+            'password' => $input['password'],
+            'address' => $input['address'],
+//                'img' => $src_photo
+        ]);
+    }
+
+    function createNewUser($input)
+    {
+        return $this->create([
+            'firstName' => $input['firstName'],
+            'lastName' => $input['lastName'],
+            'DateOfBirth' => $input['dateOfBirth'],
+            'email' => $input['email'],
+            'password' => $input['password'],
+            'address' => $input['address'],
+            'img' => '../../images/holder.jpg'
+        ]);
+    }
+
+    function maxUserById()
+    {
+        return $this->max('id');
     }
 }
