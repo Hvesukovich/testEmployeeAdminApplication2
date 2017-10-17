@@ -47,4 +47,4 @@ php artisan admin:create login password
 10. Создано 2 теста: 
 1 - проверка аутентификации с переходом на страницу отображения всех сотрудников.
 2 - проверка аутентификации с переходом на страницу отображения всех сотрудников, поиск пользователя "Liam" и переход в его личную карточку.
-![Employee admin page](https://cloud.mail.ru/public/26zW/ekBV85Mzk)
+![Employee admin page](https://raw.githubusercontent.com/CuriousVit/laravel_employee_admin/master/public/laravel_employee_admin.PNG)
