@@ -7,47 +7,50 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Требования
+Используя Laravel в качестве платформы веб-приложений, создайть приложение, которое позволяет зарегистрированному пользователю добавлять / редактировать / удалять информацию о сотрудниках. Все
+вошедшие в систему пользователи для этого приложения считаются администраторами с полными привилегиями. Администраторам приложений должно быть разрешено просматривать текущих
+сотрудников, редактировать действующих сотрудников, а также добавлять сотрудников. Информация о сотруднике должна храниться в базе данных. Информация
+о сотруднике, как минимум, должно включать их имя, дату рождения и домашний адрес. Всякий раз, когда информация о сотруднике добавляется или редактируется, необходимо удостовериться, что введенный адрес является действительным почтовым адресом Соединенных Штатов, используя сторонний провайдер, прежде чем разрешить его сохранение
+в базе данных.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Задания
+Создайть консольную команду, которая позволит добавлять новых администраторов в приложение
+Отобразить список сотрудников, которые уже были добавлены в базу данных.
+Разрешить администраторам редактировать существующие записи сотрудников
+Разрешить администраторам добавлять новые записи сотрудников
+Разрешить администраторам удалять существующие записи сотрудников
+Когда записи сотрудника добавляются или редактируются, проверяйте адресс сотрудника с помощью внешней службы
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Дополнительные задания
+Создайте конечную точку API REST для аутентификации и входа в систему администратора
+Создайте конечную точку API REST для добавления или сохранения информации сотрудника
+Создайте конечную точку API REST для удаления информации сотрудника
+Напишите единичные и / или функциональные тесты, чтобы проверить, что написанное вами приложение работает должным образом
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+# Выполнение
 
-## Learning Laravel
+## Технологии
+Для выполнения проекта были использованы следующие технологии:
+1. Laravel 5.5.8
+2. MySQL 5.6.34 
+3. jQuery
+4. Ajax
+5. Bootstrap 4.0.0-beta
+6. Шрифты Font Awesome
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Выполнения заданий
+1. Реализована возможность аутентификации пользователя.
+2. Реализована возможность создания / просмотра / редактирования / удаления карточки сотрудника.
+3. При создании / редактировании карточки сотрудника осуществлена проверка адресса (США) с помощью GOOGLE MAPS API. При неверном адрессе создать / отредактировать карточку невозможно.
+4. Создан API http://site.com/api/login-verification - для аутентификации пользователя
+5. Создан API http://site.com/api/get-all-users - для вывода вывода всех сотрудников 
+6. Создан API http://site.com/api/delete-user/{id} - для удаления карточки сотрудника
+7. Создан API http://site.com/api/save-user - для сохранения карточки сотрудника
+8. Реализована возможность заполнения базы данных тестовыми данными AdminsFactory и UserFactory (запускается с помощью команды php artisan db:seed).
+9. Реализована возможность создания администратора через терминал. А именно была созданна говая команда php artisan admin:create с 2-мя аргументами логин и пароль.
+Пример команды целеком:
+php artisan admin:create login password
+10. Создано 2 теста: 
+1 - проверка аутентификации с переходом на страницу отображения всех сотрудников.
+2 - проверка аутентификации с переходом на страницу отображения всех сотрудников, поиск пользователя "Liam" и переход в его личную карточку.
