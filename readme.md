@@ -34,7 +34,7 @@
 
 ## Выполнения заданий
 1. Реализована возможность аутентификации пользователя.
-<img src="https://cloclo19.cloud.mail.ru/thumb/xw1/%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE/LaravelEmployeeAdminApplication/%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F.jpg?x-email=3hopkins%40mail.ru">
+<p align="center"><img src="https://cloud.mail.ru/public/26zW/ekBV85Mzk"></p>
 2. Реализована возможность создания / просмотра / редактирования / удаления карточки сотрудника.
 3. При создании / редактировании карточки сотрудника осуществлена проверка адресса (США) с помощью GOOGLE MAPS API. При неверном адрессе создать / отредактировать карточку невозможно.
 4. Создан API http://site.com/api/login-verification - для аутентификации пользователя
