@@ -34,7 +34,11 @@
 
 ## Выполнения заданий
 1. Реализована возможность аутентификации пользователя.
+![Employee admin page](https://github.com/Hvesukovich/testEmployeeAdminApplication2/blob/master/public/images/Screenshots/authentication.jpg)
 2. Реализована возможность создания / просмотра / редактирования / удаления карточки сотрудника.
+![Employee admin page](https://github.com/Hvesukovich/testEmployeeAdminApplication2/blob/master/public/images/Screenshots/Modal_window_for creating_employee_editing.jpg)
+![Employee admin page](https://github.com/Hvesukovich/testEmployeeAdminApplication2/blob/master/public/images/Screenshots/team.jpg)
+![Employee admin page](https://github.com/Hvesukovich/testEmployeeAdminApplication2/blob/master/public/images/Screenshots/employee_details.jpg)
 3. При создании / редактировании карточки сотрудника осуществлена проверка адресса (США) с помощью GOOGLE MAPS API. При неверном адрессе создать / отредактировать карточку невозможно.
 4. Создан API http://site.com/api/login-verification - для аутентификации пользователя
 5. Создан API http://site.com/api/get-all-users - для вывода вывода всех сотрудников 
@@ -47,4 +51,3 @@ php artisan admin:create login password
 10. Создано 2 теста: 
 1 - проверка аутентификации с переходом на страницу отображения всех сотрудников.
 2 - проверка аутентификации с переходом на страницу отображения всех сотрудников, поиск пользователя "Liam" и переход в его личную карточку.
-![Employee admin page](https://github.com/Hvesukovich/testEmployeeAdminApplication2/blob/master/public/images/Screenshots/authentication.jpg)
